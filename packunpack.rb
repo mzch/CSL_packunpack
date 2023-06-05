@@ -171,10 +171,10 @@ class SkylinesLocale
 
 			@list.each { |e|
 				if e.is_a?(Struct::Header)
-					if e.value =~ /^<<([0-9A-F]+)>>$/
-						val = [$1].pack("H*")
-					elsif e.value.is_a?(Integer)
+					if e.value.is_a?(Integer)
 						val = [e.value].pack("N")
+					elsif e.value =~ /^<<([0-9A-F]+)>>$/
+						val = [$1].pack("H*")
 					else
 						val = string_mask(e.value)
 					end
